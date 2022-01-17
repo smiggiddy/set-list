@@ -67,6 +67,7 @@ def signup():
                 db.session.add(new_user)
                 db.session.commit()
                 login_user(new_user)
+                return redirect(url_for('setview.home'))
             except Exception as E:
                 print('Email Taken')
                 return redirect(url_for('setview.home'))

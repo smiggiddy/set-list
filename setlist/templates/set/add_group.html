@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %} Add Members {% endblock title %}
+
+{% block content %}
+<h1 align="center"> Add Members </h1>
+<div class="container translate-middle">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+        {{ wtf.quick_form(form) }}
+        </div>
+    </div>
+</div>
+
+<h1 align="Center"> Current Set List Members</h1>
+{% if group  %}
+{% for member in group %}
+<p align="center">{{ member.name }} {{ member.email}} {{ member.email}} </p>
+{% endfor %}
+{% endif %}
+
+
+
+{% endblock content %}

@@ -8,7 +8,16 @@
 
 <h1 align="center"> Setlist - Dashboard </h1>
 
-<p>Create Set list</p>
+<p>User Created Set Lists:</p>
+{% if sets %}
+{% for set in sets %}
+<p>{{ set.set_name}} {{ set.description }}</p>
+
+{% endfor %}
+{% endif %}
+
+
+
 
 {% else %}
 
