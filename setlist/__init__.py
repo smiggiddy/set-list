@@ -40,7 +40,18 @@ def create_app(test_config=None):
 
     create_db(app)
 
-    #TODO import the Authentication stuff here
+    # Initialize Bootstrap to App
+    Bootstrap(app)
+
+
+    # User Authentication Initialization
+    login_manager = LoginManager()
+    login_manager.init_app(app)
+
+    @login_manager.user_loader
+    def load_user(id):
+        return Users.query.get(int(id))
+
 
     return app
 

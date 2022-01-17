@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %} Setlist - Dashboard {% endblock  %}
+{% block content %}
+
+{% if current_user.is_authenticated %}
+
+<h1 align="center"> Setlist - Dashboard </h1>
+
+<p>Create Set list</p>
+
+{% else %}
+
+<h1 align="center"> Welcome to Setlist </h1>
+
+{% endif %}
+
+{% endblock %}
+

@@ -8,11 +8,10 @@ class Users(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
     password = db.Column(db.String(250),)
-    email = db.Column(db.String(300), nullable=False)
+    email = db.Column(db.String(300), nullable=False, unique=True)
 
     # Link Set list Database to User
     set_list = relationship('UserSetList', back_populates='set_owner')
-    set_list_id = db.Column(db.Integer, db.ForeignKey('usersetlist.id'))
 
 
 class UserSetList(db.Model):
@@ -25,6 +24,7 @@ class UserSetList(db.Model):
 
     group_members = relationship("GroupMembers", back_populates="setlist")
     set_owner = relationship('Users', back_populates="set_list")
+    set_owner_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
 
 class GroupMembers(db.Model):
